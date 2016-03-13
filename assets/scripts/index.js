@@ -5,13 +5,13 @@ let access = require('./api/access.js');
 
 // handlebars template require below
 let navbarTemplate = require('./handlebars/navbar.handlebars');
-let modalTemplate = require('./handlebars/sign-modal.handlebars');
+// let modalTemplate = require('./handlebars/sign-modal.handlebars');
 let surveyTemplate = require('./handlebars/create-survey.handlebars');
 let dashTemplate = require('./handlebars/dashboard.handlebars');
 
 let init = function() {
   // Main Functionaliy
-  $('.modal-body').append(modalTemplate());
+  // $('.modal-body').append(modalTemplate());
   $('.navbar').append(navbarTemplate());
   $('.create-survey-page').append(surveyTemplate());
   $('.dashboard-page').append(dashTemplate());
