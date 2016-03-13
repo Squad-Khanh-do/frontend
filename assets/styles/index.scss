@@ -2,13 +2,15 @@ $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
 @import '~bootstrap-sass/assets/stylesheets/bootstrap';
 @import 'navbar';
 @import 'colors';
+@import 'survey-handlebars';
 
 
-.homepage-content{
+
+.homepage-content {
   margin-top: 5em;
 }
 
-footer{
+footer {
   margin-bottom: 3em;
 }
 
