@@ -4,14 +4,26 @@
 //from handlebars
 .navbar-right {
   margin-right: 1em;
+
+  li a:link {
+    color: $white;
+  }
 }
 
-.nav > li > a:link {
-  color: $white;
-}
+
+
+
+
 
 // from the html
-.navbar {
-  background-color:$teal;
 
- }
+nav {
+  -moz-box-shadow: 2px 2px 2px $grey;
+  -webkit-box-shadow: 2px 2px 2px $grey;
+  box-shadow: 2px 2px 2px $grey;
+}
+
+.navbar {
+  background-color: $lightblue;
+
+}
