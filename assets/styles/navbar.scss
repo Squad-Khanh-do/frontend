@@ -1,0 +1,17 @@
+@import 'colors';
+
+
+//from handlebars
+.navbar-right {
+  margin-right: 1em;
+}
+
+.nav > li > a:link {
+  color: $white;
+}
+
+// from the html
+.navbar {
+  background-color:$teal;
+
+ }
