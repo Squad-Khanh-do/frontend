@@ -9,10 +9,18 @@ $(document).ready(() => {
   $('.change-password-nav').hide();
   $('.sign-out-nav').hide();
 
+  //hides modal after login action
+  let hideModal = function (){
+    $('#sign-in-modal').modal('hide');
+    $('#change-password-modal').modal('hide');
+    $('#sign-up-modal').modal('hide');
+  };
+
 
   //Create new user from form id="sign-up"
   $('#sign-up').on('submit', function(e) {
     e.preventDefault();
+    hideModal();
     var formData = new FormData(e.target);
     $.ajax({
       url: myApp.baseUrl + '/sign-up',
@@ -31,6 +39,7 @@ $(document).ready(() => {
   //Signs in registered user
   $('#sign-in').on('submit', function(e) {
     e.preventDefault();
+    hideModal();
     var formData = new FormData(e.target);
     $.ajax({
       url: myApp.baseUrl + '/sign-in',
@@ -54,6 +63,7 @@ $(document).ready(() => {
   //Change password of currently logged-in user
   $('#change-password').on('submit', function(e) {
     e.preventDefault();
+    hideModal();
     var formData = new FormData(e.target);
     $.ajax({
       url: myApp.baseUrl + '/change-password/' + myApp.user._id,
