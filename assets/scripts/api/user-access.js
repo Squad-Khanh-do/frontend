@@ -8,24 +8,11 @@ const myApp = {
 $(document).ready(() => {
   $('.change-password-nav').hide();
   $('.sign-out-nav').hide();
-  $('.alert-success').hide();
 
-  //show user email on navbar
-  let showUser = function (){
-    $( '.user-email-login' ).html(myApp.user.email);
-  };
-
-  //hides modal after login action
-  let hideModal = function (){
-    $('#sign-in-modal').modal('hide');
-    $('#change-password-modal').modal('hide');
-    $('#sign-up-modal').modal('hide');
-  };
 
   //Create new user from form id="sign-up"
   $('#sign-up').on('submit', function(e) {
     e.preventDefault();
-    hideModal();
     var formData = new FormData(e.target);
     $.ajax({
       url: myApp.baseUrl + '/sign-up',
@@ -44,7 +31,6 @@ $(document).ready(() => {
   //Signs in registered user
   $('#sign-in').on('submit', function(e) {
     e.preventDefault();
-    hideModal();
     var formData = new FormData(e.target);
     $.ajax({
       url: myApp.baseUrl + '/sign-in',
@@ -55,7 +41,6 @@ $(document).ready(() => {
     }).done(function(data) {
       myApp.user = data.user;
       console.log(data);
-      showUser();
       $('.change-password-nav').show();
       $('.sign-in-nav').hide();
       $('.sign-out-nav').show();
@@ -69,10 +54,9 @@ $(document).ready(() => {
   //Change password of currently logged-in user
   $('#change-password').on('submit', function(e) {
     e.preventDefault();
-    hideModal();
     var formData = new FormData(e.target);
     $.ajax({
-      url: myApp.baseUrl + '/change-password/' + myApp.user.id,
+      url: myApp.baseUrl + '/change-password/' + myApp.user._id,
       method: 'PATCH',
       headers: {
         Authorization: 'Token token=' + myApp.user.token,
@@ -92,7 +76,7 @@ $(document).ready(() => {
   $('#sign-out-button').on('click', function(e) {
     e.preventDefault();
     $.ajax({
-      url: myApp.baseUrl + '/sign-out/' + myApp.user.id,
+      url: myApp.baseUrl + '/sign-out/' + myApp.user._id,
       method: 'DELETE',
       headers: {
         Authorization: 'Token token=' + myApp.user.token,
@@ -103,7 +87,6 @@ $(document).ready(() => {
       $('.sign-in-nav').show();
       $('.sign-out-nav').hide();
       $('.sign-up-nav').show();
-      $( '.user-email-login' ).hide();
     }).fail(function(jqxhr) {
       console.error(jqxhr);
     });
