@@ -26,29 +26,113 @@
           <li class="left-nav"><a href="#">Dashboard</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
-          <li> <a href="#" data-toggle="modal" data-target="#Modal">Register</a></li>
-          <li> <a href="#" data-toggle="modal" data-target="#Modal">Login</a></li>
-          <li> <a href="#" data-toggle="modal" data-target="#Modal">Log Out</a></li>
-          <li> <a href="#" data-toggle="modal" data-target="#Modal">Change Password</a></li>
+          <li> <a href="#" data-toggle="modal" data-target="#sign-up-modal">Register</a></li>
+          <li> <a href="#" data-toggle="modal" data-target="#sign-in-modal">Login</a></li>
+          <li> <a href="#" data-toggle="modal" data-target="#sign-out-modal">Log Out</a></li>
+          <li> <a href="#" data-toggle="modal" data-target="#change-password-modal">Change Password</a></li>
         </ul>
       </div>
 
     </nav>
 
     <!-- Modal -->
-    <div class="modal fade" id="Modal" tabindex="-1" role="dialog" aria-labelledby="ModalLabel">
+
+    <!-- Sign Up Modal -->
+    <div class="modal fade" id="sign-up-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title">Please Sign in</h4>
+            <h4 class="modal-title" id="signup-label">Sign Up</h4>
           </div>
           <div class="modal-body">
-            <!-- handlebars sign-modal  -->
+            <form id='sign-up' enctype="multipart/form-data">
+              <fieldset class="form-group">
+                <label for="credentials[email]">Email</label>
+                <input name="credentials[email]" type="text" class="form-control" placeholder="Email">
+              </fieldset>
+              <fieldset class="form-group">
+                <label for="credentials[password]">Password</label>
+                <input name="credentials[password]" type="password" class="form-control" placeholder="Password">
+              </fieldset>
+              <input type="submit" name="submit" class="btn btn-info">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </form>
           </div>
         </div>
       </div>
-    </div>
+    </div> <!-- Sign Up Modal End-->
+
+    <!-- Sign In Modal -->
+    <div class="modal fade" id="sign-in-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="signin-label">Sign In</h4>
+          </div>
+          <div class="modal-body">
+            <form id='sign-in' enctype="multipart/form-data">
+              <fieldset class="form-group">
+                <label for="credentials[email]">Email</label>
+                <input name="credentials[email]" type="text" class="form-control" placeholder="Email">
+              </fieldset>
+              <fieldset class="form-group">
+                <label for="credentials[password]">Password</label>
+                <input name="credentials[password]" type="password" class="form-control" placeholder="Password">
+              </fieldset>
+              <input type="submit" class="btn btn-info">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div> <!-- Sign In Modal End -->
+
+    <!-- Change Password Modal -->
+    <div class="modal fade" id="change-password-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="changepw-label">Change Password</h4>
+          </div>
+          <div class="modal-body">
+            <form id='change-password' enctype="multipart/form-data">
+              <fieldset class="form-group">
+                <label for="passwords[old]">Old Password</label>
+                <input name="passwords[old]" type="password" class="form-control" placeholder="Old Password">
+              </fieldset>
+              <fieldset class="form-group">
+                <label for="passwords[new]">New Password</label>
+                <input name="passwords[new]" type="password" class="form-control" placeholder="New Password">
+              </fieldset>
+              <input type="submit" class="btn btn-info">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>  <!-- Change Password Modal End -->
+
+    <!--Sign Out Modal-->
+    <div class="modal fade" id="sign-out-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="sign-out-label">Are you sure you want to sign out?</h4>
+          </div>
+          <div class="modal-body">
+            <button type="button" class="btn btn-info" id="sign-out-button" data-dismiss="modal">Yes</button>
+            <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
+          </div>
+        </div>
+      </div>
+    </div> <!--Sign Out Modal End-->
+
+
+
     <!--end modal -->
 
     <!-- *********** Container Content ***********-->
