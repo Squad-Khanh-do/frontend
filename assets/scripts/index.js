@@ -1,6 +1,6 @@
 'use strict';
 
-let access = require('./api/access.js');
+// let access = require('./api/access.js');
 //let uiAction = require('./ui/actions.js');
 
 // handlebars template require below
@@ -17,10 +17,10 @@ let init = function() {
   $('.create-survey-page').append(createTemplate());
   $('.edit-survey-page').append(editTemplate());
   $('.dashboard-page').append(dashTemplate());
-  $('#register').on('submit', access.signUp);
-  $('#logIn').on('submit', access.signIn);
-  $('#logOut').on('submit', access.signOut);
-  $('#changePw').on('submit', access.chPass);
+  // $('#register').on('submit', access.signUp);
+  // $('#logIn').on('submit', access.signIn);
+  // $('#logOut').on('submit', access.signOut);
+  // $('#changePw').on('submit', access.chPass);
   // Other functions below
 };
 
