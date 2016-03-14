@@ -7,6 +7,7 @@ $(document).ready(() => {
   $('.change-password-nav').hide();
   $('.sign-out-nav').hide();
   $('.left-nav').hide();
+  $('.loggedin-ui').hide();
 
   //hides modal after login action
   let hideModal = function (){
@@ -50,6 +51,8 @@ $(document).ready(() => {
       myApp.user = data.user;
       console.log(data);
       $('.change-password-nav').show();
+      $('.homepage-content').hide();
+      $('.loggedin-ui').show();
       $('.left-nav').show();
       $('.sign-in-nav').hide();
       $('.sign-out-nav').show();
@@ -94,8 +97,10 @@ $(document).ready(() => {
     }).done(function() {
       console.log("User Logged Out");
       $('.left-nav').hide();
+      $('.loggedin-ui').hide();
       $('.change-password-nav').hide();
       $('.sign-in-nav').show();
+      $('.homepage-content').show();
       $('.sign-out-nav').hide();
       $('.sign-up-nav').show();
     }).fail(function(jqxhr) {
