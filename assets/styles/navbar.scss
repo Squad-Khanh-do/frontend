@@ -1,7 +1,5 @@
 @import 'colors';
 
-
-
 .navbar-right {
   margin-right: 1em;
 
@@ -17,13 +15,6 @@
    background-color: $pink;
  }
 
-
-.navbar-inverse .navbar-brand {
-  color: $white;
-}
-.navbar-inverse .navbar-brand:hover {
-  color: $white;
-}
 .navbar-inverse .navbar-nav>li>a {
   color: $white;
 }
