@@ -1,25 +1,29 @@
 @import 'colors';
 
-
-//from handlebars
-
-
 .navbar-right {
   margin-right: 1em;
 
 }
 
+.navbar-inverse {
+  background-color: $teal;
+  border: 0;
 
-
-
-// from the html
-
-nav {
-  -moz-box-shadow: 2px 2px 2px $grey;
-  -webkit-box-shadow: 2px 2px 2px $grey;
-  box-shadow: 2px 2px 2px $grey;
 }
 
-.navbar {
-  background-color: $lightblue;
+.navbar-inverse .navbar-nav>.active>a:hover,.navbar-inverse .navbar-nav>li>a:hover, .navbar-inverse .navbar-nav>li>a:focus {
+   background-color: $pink;
+ }
+
+.navbar-inverse .navbar-nav>li>a {
+  color: $white;
 }
+.navbar-inverse .navbar-nav>li>a:hover, .navbar-inverse .navbar-nav>li>a:focus {
+  color: $white;
+}
+.navbar-inverse .navbar-nav>.active>a,.navbar-inverse .navbar-nav>.open>a, .navbar-inverse .navbar-nav>.open>a:hover, .navbar-inverse .navbar-nav>.open>a:focus {
+  color: $white;
+}
+.navbar-inverse .navbar-nav>.active>a:hover, .navbar-inverse .navbar-nav>.active>a:focus {
+   color: $white;
+ }
