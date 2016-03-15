@@ -1,18 +1,11 @@
 'use strict';
 
-let uiSurvey = require('../ui/survey');
+let uiSurveyActions = require('../ui/survey');
+let uiSignActions = require('../ui/sign-actions');
 let myApp = require('../myApp');
-
-//hides modal after login action
-let hideModal = function (){
-  $('#sign-in-modal').modal('hide');
-  $('#change-password-modal').modal('hide');
-  $('#sign-up-modal').modal('hide');
-};
 
 let signUp = function (e) {
   e.preventDefault();
-  hideModal();
   var formData = new FormData(e.target);
   $.ajax({
     url: myApp.baseUrl + '/sign-up',
@@ -23,7 +16,6 @@ let signUp = function (e) {
   })
   .done(function(data) {
     console.log(data);
-    // $('#sign-up-modal').modal('hide');
   })
   .fail(function(jqxhr) {
     console.error(jqxhr);
@@ -32,7 +24,6 @@ let signUp = function (e) {
 
 let signIn = function (e) {
   e.preventDefault();
-  hideModal();
   var formData = new FormData(e.target);
   $.ajax({
     url: myApp.baseUrl + '/sign-in',
@@ -40,18 +31,10 @@ let signIn = function (e) {
     contentType: false,
     processData: false,
     data: formData,
-  }).done(function(data) {
-    myApp.user = data.user;
-    console.log(data);
-    $('.change-password-nav').show();
-    $('.homepage-content').hide();
-    $('.loggedin-ui').show();
-    $('.left-nav').show();
-    $('.sign-in-nav').hide();
-    $('.sign-out-nav').show();
-    $('.sign-up-nav').hide();
-  }).fail(function(jqxhr) {
-    console.error(jqxhr);
+  })
+  .done(uiSignActions.inSuccess)
+  .fail(function(err) {
+    console.error(err);
   });
 };
 
@@ -64,24 +47,14 @@ let signOut = function (e) {
       Authorization: 'Token token=' + myApp.user.token,
     },
   })
-  .done(function() {
-    console.log("User Logged Out");
-    $('.left-nav').hide();
-    $('.loggedin-ui').hide();
-    $('.change-password-nav').hide();
-    $('.sign-in-nav').show();
-    $('.homepage-content').show();
-    $('.sign-out-nav').hide();
-    $('.sign-up-nav').show();
-  })
-  .fail(function(jqxhr) {
-    console.error(jqxhr);
+  .done(uiSignActions.outSuccess)
+  .fail(function(err) {
+    console.error(err);
   });
 };
 
 let changePassword = function(e) {
   e.preventDefault();
-  hideModal();
   var formData = new FormData(e.target);
   $.ajax({
     url: myApp.baseUrl + '/change-password/' + myApp.user._id,
@@ -95,10 +68,9 @@ let changePassword = function(e) {
   })
   .done(function(data) {
     console.log(data);
-    // $('#change-password-modal').modal('hide');
   })
-  .fail(function(jqxhr) {
-    console.error(jqxhr);
+  .fail(function(err) {
+    console.error(err);
   });
 };
 
