@@ -3,6 +3,7 @@
 const myApp = {
   baseUrl: 'http://localhost:3000',
 };
+
 $(document).ready(() => {
   $('.change-password-nav').hide();
   $('.sign-out-nav').hide();
@@ -109,6 +110,4 @@ $(document).ready(() => {
   });
 });
 
-module.exports = {
-  myApp
-};
+module.exports = myApp;
