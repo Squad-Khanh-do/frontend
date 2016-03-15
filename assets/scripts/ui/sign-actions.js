@@ -2,6 +2,15 @@
 
 let myApp = require('../myApp');
 
+
+let other = function () {
+  // things to be called later
+  let editTemplate = require('../handlebars/edit-survey.handlebars');
+  $('.edit-survey-page').append(editTemplate());
+  let createTemplate = require('../handlebars/create-survey.handlebars');
+  $('.create-survey-page').append(createTemplate());
+};
+
 //hides modal after login action
 let hideModal = function (){
   $('#sign-in-modal').modal('hide');
@@ -10,11 +19,8 @@ let hideModal = function (){
 };
 
 let surveyTemplateShow = function () {
-  let createTemplate = require('../handlebars/create-survey.handlebars');
-  let editTemplate = require('../handlebars/edit-survey.handlebars');
+  // templates to render after successful signin
   let dashTemplate = require('../handlebars/dashboard.handlebars');
-  $('.create-survey-page').append(createTemplate());
-  $('.edit-survey-page').append(editTemplate());
   $('.dashboard-page').append(dashTemplate());
 };
 
