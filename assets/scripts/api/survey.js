@@ -51,7 +51,7 @@ let updateSurvey = function (id, formLocation, onSuccess, onFailure) {
   let item = new FormData(document.querySelector(formLocation));  // document.querySelector('#createSurvey')  // object containing the FormData
   $.ajax({
     url: myApp.baseUrl + '/surveys/'+ id,
-    method: 'POST',
+    method: 'PATCH',
     headers: {
       Authorization: 'Token token='+ myApp.user.token,
     },
