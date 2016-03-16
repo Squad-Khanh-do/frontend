@@ -7,8 +7,6 @@ let other = function () {
   // things to be called later
   let editTemplate = require('../handlebars/edit-survey.handlebars');
   $('.edit-survey-page').append(editTemplate());
-  let createTemplate = require('../handlebars/create-survey.handlebars');
-  $('.create-survey-page').append(createTemplate());
 };
 
 //hides modal after login action
