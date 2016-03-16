@@ -20,6 +20,34 @@ let createSurvey = function (formLocation, onSuccess, onFailure) {
   .fail(onFailure);
 };
 
+let retrieveSurvey = function (id, onSuccess, onFailure) {
+  $.ajax({
+  url: myApp.baseUrl + "/surveys/" + id,
+  method: 'GET',
+  headers: {
+    Authorization: 'Token token='+ myApp.user.token,
+  },
+  dataType: 'json'
+})
+.done(onSuccess)
+.fail(onFailure);
+};
+
+let retrieveSurveys = function (onSuccess, onFailure) {
+  $.ajax({
+  url: myApp.baseUrl + "/surveys",
+  method: 'GET',
+  headers: {
+    Authorization: 'Token token='+ myApp.user.token,
+  },
+  dataType: 'json'
+})
+.done(onSuccess)
+.fail(onFailure);
+};
+
 module.exports = {
-  createSurvey
+  createSurvey,
+  retrieveSurvey,
+  retrieveSurveys,
 };

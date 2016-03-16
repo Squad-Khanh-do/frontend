@@ -16,6 +16,18 @@ $('.survey-tab').on('click', function () {
   });
 });
 
+let renderDash = function (survey) {
+  console.log(survey);
+  let dashTemplate = require('../handlebars/dashboard.handlebars');
+  $('.dashboard-page').html(dashTemplate({survey}));
+};
+
+$('.dashboard-tab').on('click', function () {
+  $('.create-survey-page').empty();
+  api.retrieveSurveys(renderDash, log);
+  // add button controller JQ
+});
+
 // event.preventDefault();
 // api.createSurvey(event, function (items) {
 //       let dashTemplate = require('../handlebars/dashboard.handlebars');

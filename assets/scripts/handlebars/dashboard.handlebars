@@ -4,19 +4,39 @@
   <table class="table table-bordered">
     <thead>
       <tr>
-        <th>Title</th>
+        <th>Survey</th>
         <th>Question</th>
         <th>Type</th>
         <th>Answer</th>
+        <th>Test Actions</th>
       </tr>
     </thead>
     <tbody id="result-list">
-      <tr data-results-id="{{id}}">
-        <td>{{id}}</td>
-        <td>{{id}}</td>
-        <td>{{id}}</td>
-        <td>{{id}}</td>
+      {{#survey.surveys}}
+      <tr data-results-id="{{this.id}}">
+        <td><a>{{this.title}}</a></td>
+        <td>
+          {{#this.questions}}
+            {{this.text}}
+          {{/this.questions}}
+        </td>
+        <td>{{this.type}}</td>
+        <td>{{this.Answer}}</td>
+        <td>
+          <span class="pull-right">
+            <button class="btn btn-xs btn-info">
+              <span class="glyphicons glyphicons-pencil"> UPDATE</span>
+            </button>
+            <button class="btn btn-xs btn-warning">
+              <span class="glyphicon glyphicon-trash"> DELETE</span>
+            </button>
+            <button class="btn btn-xs btn-warning">
+              <span class="glyphicon glyphicon-trash"> Create</span>
+            </button>
+          </span>
+        </td>
       </tr>
+      {{/survey.surveys}}
       </script>
     </tbody>
   </table>
