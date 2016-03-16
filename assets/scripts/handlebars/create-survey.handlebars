@@ -4,21 +4,28 @@
   <div class="form-row">
     <label>
       <span>Survey Title</span>
-      <input type="text" name="name">
+      <input type="text" name="survey[title]">
+    </label>
+  </div>
+
+  <div class="form-row">
+    <label>
+      <span>Description Text </span>
+      <textarea name="survey[description]"></textarea>
     </label>
   </div>
 
   <div class="form-row">
     <label>
       <span>Survey Question</span>
-      <input type="text" name="text">
+      <input type="text" name="survey[questions][text]">
     </label>
   </div>
 
-  <div class="form-row">
+ <div class="form-row">
     <label>
       <span>Survey Type</span>
-      <select name="dropdown">
+      <select name="survey[type]">
         <option>Multiple Choice</option>
         <option>Scale</option>
         <option>Text</option>
@@ -28,48 +35,13 @@
 
   <div class="form-row">
     <label>
-      <span>Answer Textarea</span>
-      <textarea name="textarea"></textarea>
+      <span>Answer Text </span>
+      <textarea name="survey[answer]"></textarea>
     </label>
   </div>
 
   <div class="form-row">
-    <label>
-      <span>Checkbox</span>
-      <input type="checkbox" name="checkbox" checked>
-    </label>
-  </div>
-
-  <div class="form-row">
-    <label><span>Radio</span></label>
-    <div class="form-radio-buttons">
-
-      <div>
-        <label>
-          <input type="radio" name="radio">
-          <span>Radio option 1</span>
-        </label>
-      </div>
-
-      <div>
-        <label>
-          <input type="radio" name="radio">
-          <span>Radio option 2</span>
-        </label>
-      </div>
-
-      <div>
-        <label>
-          <input type="radio" name="radio">
-          <span>Radio option 3</span>
-        </label>
-      </div>
-
-    </div>
-  </div>
-
-  <div class="form-row">
-    <button type="submit" class="btn btn-info">Take It A'vey!</button>
+    <button type="submit" class="btn btn-info create-survey-submit">Take It A'vey!</button>
   </div>
 
 </form>

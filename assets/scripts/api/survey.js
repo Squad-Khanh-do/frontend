@@ -1,17 +1,15 @@
 'use strict';
 
-let env = require('./user-access');
+let myApp = require('../myApp');
 
-let createSurvey = function (event, onSuccess, onFailure) {
-  event.preventDefault();                   // Stops page Reload
-  let item = new FormData(document.querySelector('#createSurvey'));    // object containing the FormData
-  console.log(item);
+let createSurvey = function (formLocation, onSuccess, onFailure) {
+  event.preventDefault();  //createSurvey                 // Stops page Reload
+  let item = new FormData(document.querySelector(formLocation));  // document.querySelector('#createSurvey')  // object containing the FormData
   $.ajax({
-    url: env.baseUrl + "/surveys",
-    // url: 'http://httpbin.org/post',
+    url: myApp.baseUrl + '/surveys',
     method: 'POST',
     headers: {
-      Authorization: 'Token token='+ env.user.token,
+      Authorization: 'Token token='+ myApp.user.token,
     },
     dataType: 'json',
     contentType: false,                     // Needed for FormData
@@ -21,7 +19,6 @@ let createSurvey = function (event, onSuccess, onFailure) {
   .done(onSuccess)
   .fail(onFailure);
 };
-
 
 module.exports = {
   createSurvey
