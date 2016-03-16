@@ -12,26 +12,37 @@ $('.survey-tab').on('click', function () {
   $('.dashboard-page').empty();
   $('.create-survey-submit').on('click', function(){
     console.log("submit works");
-    api.createSurvey('#createSurvey', log, log);
+    api.createSurvey('#createSurvey', refreshDash, log);
   });
 });
 
-let renderDash = function (survey) {
-  console.log(survey);
-  let dashTemplate = require('../handlebars/dashboard.handlebars');
-  $('.dashboard-page').html(dashTemplate({survey}));
+let uiDeleteSurvey = function() {
+  $('.delete-button').on('click', function(e) {
+    e.preventDefault();
+    $('.deleteModal').modal('show');
+    var surveyId = $(this).attr('data-results-id');
+    $('.delete-survey-button').on('click', function(e){
+      e.preventDefault();
+      api.deleteSurvey(surveyId, function(){
+        $('.deleteModal').modal('hide');
+        refreshDash();
+      }, log);
+    });
+  });
 };
 
-$('.dashboard-tab').on('click', function () {
+let renderDash = function (survey) {
+  let dashTemplate = require('../handlebars/dashboard.handlebars');
+  $('.dashboard-page').html(dashTemplate({survey}));
+    uiDeleteSurvey();
+};
+
+let refreshDash = function () {
   $('.create-survey-page').empty();
   api.retrieveSurveys(renderDash, log);
   // add button controller JQ
-});
+};
 
-// event.preventDefault();
-// api.createSurvey(event, function (items) {
-//       let dashTemplate = require('../handlebars/dashboard.handlebars');
-//       $('.dashboard-page').append(dashTemplate({items}));
-// }, log);
+$('.dashboard-tab').on('click', refreshDash);
 
 module.exports = true;
