@@ -1,0 +1,11 @@
+<h2 class="survey-title result-list"> Survey Results </h2>
+<form class="form-basic">
+
+      <p>{{#answer.surveyResponses}}
+          <ul class="result-list">
+            <li>{{this.response}}</li>
+          </ul>
+      {{/answer.surveyResponses}}
+</p>
+
+</form>
