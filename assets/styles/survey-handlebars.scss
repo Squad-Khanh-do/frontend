@@ -8,78 +8,74 @@
   text-align: center;
 }
 
+.right-side{
+  float: right;
+  font-weight: normal;
+  margin-top: 12px;
+}
+
+th {
+  font-size: 15px;
+}
+
+th, td, tr, .button-center {
+  margin: auto;
+  text-align: center;
+  position: inherit;
+}
+
 .form-basic{
-    max-width: 700px;
-    margin: 0 auto;
-    padding: 55px;
-    box-sizing: border-box;
-    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
-    text-align: center;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
+  margin: 0 auto;
+  max-width: 700px;
+  padding: 55px;
+  text-align: center;
 }
 
 .form-basic .form-row{
-    text-align: left;
-    margin-bottom: 22px;
+  text-align: left;
+  margin-bottom: 22px;
 }
 
+.survey-result-block {
+  margin-left: 9em;
+}
+
+.result-list {
+  list-style-type: square;
+  list-style-position:inside;
+}
 
 .form-basic .form-row > label span{
-    display: inline-block;
-    box-sizing: border-box;
-    width: 180px;
-    text-align: right;
-    vertical-align: top;
-    padding: 12px 25px;
+  box-sizing: border-box;
+  display: inline-block;
+  padding: 12px 25px;
+  text-align: right;
+  vertical-align: top;
+  width: 180px;
 }
 
 .form-basic input{
-    box-sizing: border-box;
-    width: 250px;
-    box-shadow: 1px 2px 4px 0 rgba(0, 0, 0, 0.08);
-    padding: 12px;
-    border: 1px solid $lightgrey;
+  border: 1px solid $lightgrey;
+  box-shadow: 1px 2px 4px 0 rgba(0, 0, 0, 0.08);
+  box-sizing: border-box;
+  padding: 10px;
+  width: 250px;
 }
-
-.form-basic input[type=radio],
-.form-basic input[type=checkbox]{
-    box-shadow: none;
-    width: auto;
-}
-
-.form-basic input[type=checkbox]{
-    margin-top: 13px;
-}
-
 
 .form-basic textarea{
-    box-sizing: border-box;
-    width: 250px;
-    height: 80px;
-    box-shadow: 1px 2px 4px 0 rgba(0, 0, 0, 0.08);
-    font: normal 13px sans-serif;
-    padding: 12px;
-    border: 1px solid $lightgrey;
-    resize: vertical;
+  border: 1px solid $lightgrey;
+  box-shadow: 1px 2px 4px 0 rgba(0, 0, 0, 0.08);
+  box-sizing: border-box;
+  font: normal 13px sans-serif;
+  height: 50px;
+  padding: 10px;
+  resize: vertical;
+  width: 250px;
 }
 
-.form-basic .form-radio-buttons{
-    display: inline-block;
-    vertical-align: top;
-}
-
-.form-basic .form-radio-buttons > div{
-    margin-top: 10px;
-}
-
-.form-basic .form-radio-buttons label span{
-    margin-left: 8px;
-    font-weight: normal;
-}
-
-.form-basic .form-radio-buttons input{
-    width: auto;
-}
 
 .form-basic button{
-    margin: 40px 183px 0;
+  margin: 40px 183px 0;
 }
