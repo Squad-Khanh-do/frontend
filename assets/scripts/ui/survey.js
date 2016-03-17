@@ -12,6 +12,7 @@ let renderDash = function (survey) {
     uiDeleteSurvey();
     uiUpdateSurvey();
     uiResponseSurvey();
+    showResult();
 };
 
 let refreshDash = function () {
@@ -73,6 +74,19 @@ let uiResponseSurvey = function() {
       $('.response-submit').on('click', function(){
         api.postResponse(surveyId, '#responseSurvey', refreshDash, refreshDash); // HACK: unknown success or failure order
       });
+    });
+  });
+};
+
+let showResult = function() {
+  $('.result').on('click', function(e) {
+      e.preventDefault();
+      var surveyId = $(this).attr('data-results-id');
+      api.getOneSurvey(surveyId, function (survey) {
+        let resultTemplate = require('../handlebars/survey-results.handlebars');
+        $('.dashboard-page').empty();
+        console.log(survey);
+        $('.create-survey-page').html(resultTemplate({survey}));
     });
   });
 };

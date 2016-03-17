@@ -1,0 +1,54 @@
+<h2 class="survey-title">Answer It A'vey</h2>
+<form class="form-basic" id='responseSurvey'>
+
+  <div class="form-row">
+    <label>
+      <span>Survey Title</span>
+      <p name="survey[title]">
+        {{#survey.survey}}
+          {{this.title}}
+        {{/survey.survey}}
+      </p>
+    </label>
+  </div>
+
+  <div class="form-row">
+    <label>
+      <span>Description Text </span>
+      <p name="survey[description]">
+        {{#survey.survey}}
+          {{this.description}}
+        {{/survey.survey}}
+      </p>
+    </label>
+  </div>
+
+  <div class="form-row">
+    <label>
+      <span>Survey Question</span>
+      <p name="survey[questions][text]">
+        {{#survey.survey}}
+          {{#this.questions}}
+            {{this.text}}
+          {{/this.questions}}
+        {{/survey.survey}}
+      </p>
+    </label>
+  </div>
+
+  <div class="form-row">
+    <label>
+      <span>Answer Text </span>
+      <div name="surveyResponse[response]">
+        {{#surveyResponses}}
+          {{this.response}}
+        {{/surveyResponses}}
+      </div>
+    </label>
+  </div>
+
+  <div class="form-row">
+    <button type="submit" class="btn btn-info response-submit">Take It A'vey!</button>
+  </div>
+
+</form>
