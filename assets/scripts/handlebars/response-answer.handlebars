@@ -1,8 +1,11 @@
-  <div class="form-row">
-    <label>
-      <span>Answer Text </span>
-      {{#answer.surveyResponses}}
-          <p>{{this.response}}
+<h2 class="survey-title result-list"> Survey Results </h2>
+<form class="form-basic">
+
+      <p>{{#answer.surveyResponses}}
+          <ul class="result-list">
+            <li>{{this.response}}</li>
+          </ul>
       {{/answer.surveyResponses}}
-    </label>
-  </div>
+</p>
+
+</form>
