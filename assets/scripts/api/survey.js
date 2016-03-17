@@ -76,8 +76,24 @@ let deleteSurvey = function (id, onSuccess, onFailure) {
   .fail(onFailure);
 };
 
+let postResponse = function (id, formLocation, onSuccess, onFailure) {
+  event.preventDefault();  //
+  let item = new FormData(document.querySelector(formLocation));  // object containing the FormData
+  $.ajax({
+    url: myApp.baseUrl + '/surveys/' + id + '/surveyResponses',
+    method: 'POST',
+    dataType: 'json',
+    contentType: false,                     // Needed for FormData
+    processData: false,                     // Needed for FormData This is because item
+    data: item                              // item is referancing the new object called 'item'.
+  })
+  .done(onSuccess)
+  .fail(onFailure);
+};
+
 
 module.exports = {
+  postResponse,
   createSurvey,
   getOneSurvey,
   retrieveSurveys,

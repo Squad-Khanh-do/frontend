@@ -14,7 +14,7 @@
     <tbody id="result-list">
       {{#survey.surveys}}
       <tr data-results-id="{{this.id}}">
-        <td><a>{{this.title}}</a></td>
+        <td><a class="survey-link" data-results-id="{{this.id}}">{{this.title}}</a></td>
         <td>
           {{#this.questions}}
             {{this.text}}

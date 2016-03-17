@@ -11,6 +11,7 @@ let renderDash = function (survey) {
   $('.dashboard-page').html(dashTemplate({survey}));
     uiDeleteSurvey();
     uiUpdateSurvey();
+    uiResponseSurvey();
 };
 
 let refreshDash = function () {
@@ -60,6 +61,22 @@ let uiUpdateSurvey = function() {
     }, log);
   });
 };
+
+let uiResponseSurvey = function() {
+  $('.survey-link').on('click', function(e) {
+    e.preventDefault();
+    var surveyId = $(this).attr('data-results-id');
+    api.getOneSurvey(surveyId, function (survey) {
+      let responseTemplate = require('../handlebars/response.handlebars');
+      $('.dashboard-page').empty();
+      $('.create-survey-page').html(responseTemplate({survey}));
+      $('.response-submit').on('click', function(){
+        api.postResponse(surveyId, '#responseSurvey', refreshDash, refreshDash); // HACK: unknown success or failure order
+      });
+    });
+  });
+};
+
 
 $('.dashboard-tab').on('click', refreshDash);
 
