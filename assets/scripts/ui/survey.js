@@ -17,6 +17,7 @@ let renderDash = function (survey) {
 
 let refreshDash = function () {
   $('.create-survey-page').empty();
+  $('.result-survey-page').empty();
   api.retrieveSurveys(renderDash, log);
 };
 
@@ -24,6 +25,7 @@ $('.survey-tab').on('click', function () {
   let createTemplate = require('../handlebars/create-survey.handlebars');
   $('.create-survey-page').html(createTemplate());
   $('.dashboard-page').empty();
+  $('.result-survey-page').empty();
   $('.create-survey-submit').on('click', function(){
     console.log("submit works");
     api.createSurvey('#createSurvey', function () {
@@ -86,10 +88,11 @@ let showResult = function() {
         $('.dashboard-page').empty();
         let resultTemplate = require('../handlebars/survey-results.handlebars');
         $('.create-survey-page').html(resultTemplate({survey}));
+        console.log(survey);
           api.allSurveyResponses(surveyId, function (answer) {
-            console.log(answer);
-            let resAwnTemplate = require('../handlebars/response-answer.handlebars');
-            $('.create-survey-page').html(resAwnTemplate({answer}));
+            $('.dashboard-page').empty();
+            let responseTemplate = require('../handlebars/response-answer.handlebars');
+            $('.result-survey-page').html(responseTemplate({answer}));
         });
     });
   });
