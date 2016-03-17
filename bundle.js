@@ -1648,28 +1648,34 @@ webpackJsonp([0],[
 	module.exports = (Handlebars["default"] || Handlebars).template({"1":function(container,depth0,helpers,partials,data) {
 	    return "        "
 	    + container.escapeExpression(container.lambda((depth0 != null ? depth0.title : depth0), depth0))
-	    + "\n";
+	    + "\n        ";
 	},"3":function(container,depth0,helpers,partials,data) {
+	    return "        "
+	    + container.escapeExpression(container.lambda((depth0 != null ? depth0.title : depth0), depth0))
+	    + "\n";
+	},"5":function(container,depth0,helpers,partials,data) {
 	    return "        "
 	    + container.escapeExpression(container.lambda((depth0 != null ? depth0.description : depth0), depth0))
 	    + "\n";
-	},"5":function(container,depth0,helpers,partials,data) {
+	},"7":function(container,depth0,helpers,partials,data) {
 	    var stack1;
 
-	  return ((stack1 = helpers.blockHelperMissing.call(depth0,container.lambda((depth0 != null ? depth0.questions : depth0), depth0),{"name":"this.questions","hash":{},"fn":container.program(6, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "");
-	},"6":function(container,depth0,helpers,partials,data) {
+	  return ((stack1 = helpers.blockHelperMissing.call(depth0,container.lambda((depth0 != null ? depth0.questions : depth0), depth0),{"name":"this.questions","hash":{},"fn":container.program(8, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "");
+	},"8":function(container,depth0,helpers,partials,data) {
 	    return "        "
 	    + container.escapeExpression(container.lambda((depth0 != null ? depth0.text : depth0), depth0))
 	    + "\n";
 	},"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
 	    var stack1, alias1=container.lambda, alias2=helpers.blockHelperMissing;
 
-	  return "<h2 class=\"survey-title\">'Vey Your Results</h2>\n<form class=\"form-basic\">\n  <div class=\"form-row survey-result-block\">\n    <label>\n      <span>Survey Title</span>\n      <p class=\"right-side\" name=\"survey[title]\">\n"
+	  return "<h2 class=\"survey-title\">\n"
 	    + ((stack1 = alias2.call(depth0,alias1(((stack1 = (depth0 != null ? depth0.survey : depth0)) != null ? stack1.survey : stack1), depth0),{"name":"survey.survey","hash":{},"fn":container.program(1, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
-	    + "      </p>\n    </label>\n  </div>\n\n  <div class=\"form-row survey-result-block\">\n    <label>\n      <span>Description Text </span>\n      <p class=\"right-side\" name=\"survey[description]\">\n"
+	    + "</h2>\n<form class=\"form-basic\">\n  <div class=\"form-row survey-result-block\">\n    <label>\n      <span>Survey Title</span>\n      <p class=\"right-side\" name=\"survey[title]\">\n"
 	    + ((stack1 = alias2.call(depth0,alias1(((stack1 = (depth0 != null ? depth0.survey : depth0)) != null ? stack1.survey : stack1), depth0),{"name":"survey.survey","hash":{},"fn":container.program(3, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
-	    + "      </p>\n    </label>\n  </div>\n\n  <div class=\"form-row survey-result-block\">\n    <label>\n      <span>Survey Question</span>\n      <p class=\"right-side\" name=\"survey[questions][text]\">\n"
+	    + "      </p>\n    </label>\n  </div>\n\n  <div class=\"form-row survey-result-block\">\n    <label>\n      <span>Description Text </span>\n      <p class=\"right-side\" name=\"survey[description]\">\n"
 	    + ((stack1 = alias2.call(depth0,alias1(((stack1 = (depth0 != null ? depth0.survey : depth0)) != null ? stack1.survey : stack1), depth0),{"name":"survey.survey","hash":{},"fn":container.program(5, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
+	    + "      </p>\n    </label>\n  </div>\n\n  <div class=\"form-row survey-result-block\">\n    <label>\n      <span>Survey Question</span>\n      <p class=\"right-side\" name=\"survey[questions][text]\">\n"
+	    + ((stack1 = alias2.call(depth0,alias1(((stack1 = (depth0 != null ? depth0.survey : depth0)) != null ? stack1.survey : stack1), depth0),{"name":"survey.survey","hash":{},"fn":container.program(7, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
 	    + "      </p>\n    </label>\n  </div>\n\n\n</form>\n";
 	},"useData":true});
 
@@ -1685,7 +1691,7 @@ webpackJsonp([0],[
 	},"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
 	    var stack1;
 
-	  return "<h2 class=\"survey-title result-list\"> Survey Results </h2>\n<form class=\"form-basic\">\n\n      <p>"
+	  return "<h2 class=\"survey-title result-list\"> 'Vey Your Results </h2>\n<form class=\"form-basic\">\n\n      <p>"
 	    + ((stack1 = helpers.blockHelperMissing.call(depth0,container.lambda(((stack1 = (depth0 != null ? depth0.answer : depth0)) != null ? stack1.surveyResponses : stack1), depth0),{"name":"answer.surveyResponses","hash":{},"fn":container.program(1, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
 	    + "</p>\n\n</form>\n";
 	},"useData":true});
