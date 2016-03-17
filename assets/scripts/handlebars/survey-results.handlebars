@@ -1,61 +1,54 @@
-<h2 class="survey-title">Make a'vey</h2>
-<form class="form-basic" id='createSurvey'>
+<h2 class="survey-title">Answer It A'vey</h2>
+<form class="form-basic" id='responseSurvey'>
 
   <div class="form-row">
     <label>
       <span>Survey Title</span>
-      <textarea name="survey[title]">
+      <p name="survey[title]">
         {{#survey.survey}}
           {{this.title}}
         {{/survey.survey}}
-      </textarea>
+      </p>
     </label>
   </div>
 
   <div class="form-row">
     <label>
       <span>Description Text </span>
-      <textarea name="survey[description]">
+      <p name="survey[description]">
         {{#survey.survey}}
           {{this.description}}
         {{/survey.survey}}
-      </textarea>
+      </p>
     </label>
   </div>
 
   <div class="form-row">
     <label>
       <span>Survey Question</span>
-      <textarea name="survey[questions][text]">
+      <p name="survey[questions][text]">
         {{#survey.survey}}
           {{#this.questions}}
             {{this.text}}
           {{/this.questions}}
         {{/survey.survey}}
-      </textarea>
+      </p>
     </label>
   </div>
-
- <!-- <div class="form-row">
-    <label>
-      <span>Survey Type</span>
-      <select name="survey[type]">
-        <option>Multiple Choice</option>
-        <option>Scale</option>
-        <option>Text</option>
-      </select>
-    </label>
-  </div>  -->
 
   <div class="form-row">
     <label>
       <span>Answer Text </span>
-      <textarea name="survey[answer]"></textarea>
+      <div name="surveyResponse[response]">
+        {{#surveyResponses}}
+          {{this.response}}
+        {{/surveyResponses}}
+      </div>
     </label>
   </div>
 
   <div class="form-row">
-    <button type="submit" class="btn btn-info create-survey-submit">Take It A'vey!</button>
+    <button type="submit" class="btn btn-info response-submit">Take It A'vey!</button>
   </div>
 
 </form>

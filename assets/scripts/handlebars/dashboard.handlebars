@@ -14,7 +14,7 @@
     <tbody id="result-list">
       {{#survey.surveys}}
       <tr data-results-id="{{this.id}}">
-        <td><a>{{this.title}}</a></td>
+        <td><a class="survey-link" data-results-id="{{this.id}}">{{this.title}}</a></td>
         <td>
           {{#this.questions}}
             {{this.text}}
@@ -23,7 +23,7 @@
         <td>
           <span class="pull-left">
             <button class="btn btn-xs btn-info">
-              <span class="result"> Result</span>
+              <span class="result" data-results-id="{{this.id}}"> Result</span>
             </button>
           </span>
         </td>
@@ -32,10 +32,10 @@
         </td>
         <td>
           <span class="pull-right">
-            <button class="btn btn-xs btn-info">
+            <button class="btn btn-xs btn-info update-button" data-results-id="{{this.id}}">
               <span class="glyphicons glyphicons-pencil"> UPDATE</span>
             </button>
-            <button class="btn btn-xs btn-warning">
+            <button class="btn btn-xs btn-warning delete-button" data-results-id="{{this.id}}">
               <span class="glyphicon glyphicon-trash"> DELETE</span>
             </button>
           </span>
