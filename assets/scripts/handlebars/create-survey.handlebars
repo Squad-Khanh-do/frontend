@@ -4,21 +4,35 @@
   <div class="form-row">
     <label>
       <span>Survey Title</span>
-      <input type="text" name="survey[title]">
+      <textarea name="survey[title]">
+        {{#survey.survey}}
+          {{this.title}}
+        {{/survey.survey}}
+      </textarea>
     </label>
   </div>
 
   <div class="form-row">
     <label>
       <span>Description Text </span>
-      <textarea name="survey[description]"></textarea>
+      <textarea name="survey[description]">
+        {{#survey.survey}}
+          {{this.description}}
+        {{/survey.survey}}
+      </textarea>
     </label>
   </div>
 
   <div class="form-row">
     <label>
       <span>Survey Question</span>
-      <input type="text" name="survey[questions][text]">
+      <textarea name="survey[questions][text]">
+        {{#survey.survey}}
+          {{#this.questions}}
+            {{this.text}}
+          {{/this.questions}}
+        {{/survey.survey}}
+      </textarea>
     </label>
   </div>
 
