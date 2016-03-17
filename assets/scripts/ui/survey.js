@@ -6,32 +6,94 @@ let log = function (data) {
   console.log(data);
 };
 
+let renderDash = function (survey) {
+  let dashTemplate = require('../handlebars/dashboard.handlebars');
+  $('.dashboard-page').html(dashTemplate({survey}));
+    uiDeleteSurvey();
+    uiUpdateSurvey();
+    uiResponseSurvey();
+    showResult();
+};
+
+let refreshDash = function () {
+  $('.create-survey-page').empty();
+  api.retrieveSurveys(renderDash, log);
+};
+
 $('.survey-tab').on('click', function () {
   let createTemplate = require('../handlebars/create-survey.handlebars');
   $('.create-survey-page').html(createTemplate());
   $('.dashboard-page').empty();
   $('.create-survey-submit').on('click', function(){
     console.log("submit works");
-    api.createSurvey('#createSurvey', log, log);
+    api.createSurvey('#createSurvey', function () {
+      $('.create-survey-page').empty();
+      api.retrieveSurveys(renderDash, log);
+    }, log);
   });
 });
 
-let renderDash = function (survey) {
-  console.log(survey);
-  let dashTemplate = require('../handlebars/dashboard.handlebars');
-  $('.dashboard-page').html(dashTemplate({survey}));
+let uiDeleteSurvey = function() {
+  $('.delete-button').on('click', function(e) {
+    e.preventDefault();
+    $('.deleteModal').modal('show');
+    var surveyId = $(this).attr('data-results-id');
+    $('.delete-survey-button').on('click', function(e){
+      e.preventDefault();
+      api.deleteSurvey(surveyId, function(){
+        $('.deleteModal').modal('hide');
+        refreshDash();
+      }, log);
+    });
+  });
 };
 
-$('.dashboard-tab').on('click', function () {
-  $('.create-survey-page').empty();
-  api.retrieveSurveys(renderDash, log);
-  // add button controller JQ
-});
+let uiUpdateSurvey = function() {
+  $('.update-button').on('click', function(e) {
+    e.preventDefault();
+    var surveyId = $(this).attr('data-results-id');
+    api.getOneSurvey(surveyId, function (survey) {
+      let createSurveyTemplate = require('../handlebars/create-survey.handlebars');
+      $('.dashboard-page').empty();
+      $('.create-survey-page').html(createSurveyTemplate({survey}));
+      $('.create-survey-submit').on('click', function(){
+        api.updateSurvey(surveyId, '#createSurvey', log, refreshDash); // HACK: ummm idk why refreshDash needs to be in failure
+      });
+    }, log);
+  });
+};
 
-// event.preventDefault();
-// api.createSurvey(event, function (items) {
-//       let dashTemplate = require('../handlebars/dashboard.handlebars');
-//       $('.dashboard-page').append(dashTemplate({items}));
-// }, log);
+let uiResponseSurvey = function() {
+  $('.survey-link').on('click', function(e) {
+    e.preventDefault();
+    var surveyId = $(this).attr('data-results-id');
+    api.getOneSurvey(surveyId, function (survey) {
+      let responseTemplate = require('../handlebars/response.handlebars');
+      $('.dashboard-page').empty();
+      $('.create-survey-page').html(responseTemplate({survey}));
+      $('.response-submit').on('click', function(){
+        api.postResponse(surveyId, '#responseSurvey', refreshDash, refreshDash); // HACK: unknown success or failure order
+      });
+    });
+  });
+};
 
-module.exports = true;
+let showResult = function() {
+  $('.result').on('click', function(e) {
+      e.preventDefault();
+      var surveyId = $(this).attr('data-results-id');
+      api.getOneSurvey(surveyId, function (survey) {
+        let resultTemplate = require('../handlebars/survey-results.handlebars');
+        $('.dashboard-page').empty();
+        console.log(survey);
+        $('.create-survey-page').html(resultTemplate({survey}));
+    });
+  });
+};
+
+
+$('.dashboard-tab').on('click', refreshDash);
+
+module.exports = {
+  refreshDash,
+};

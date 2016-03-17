@@ -1,13 +1,7 @@
 'use strict';
 
 let myApp = require('../myApp');
-
-
-let other = function () {
-  // things to be called later
-  let editTemplate = require('../handlebars/edit-survey.handlebars');
-  $('.edit-survey-page').append(editTemplate());
-};
+let uiSign = require('./survey');
 
 //hides modal after login action
 let hideModal = function (){
@@ -16,10 +10,9 @@ let hideModal = function (){
   $('#sign-up-modal').modal('hide');
 };
 
-let surveyTemplateShow = function () {
-  // templates to render after successful signin
+let renderDash = function (survey) {
   let dashTemplate = require('../handlebars/dashboard.handlebars');
-  $('.dashboard-page').append(dashTemplate());
+  $('.dashboard-page').html(dashTemplate({survey}));
 };
 
 let inSuccess = function (data) {
@@ -31,8 +24,8 @@ let inSuccess = function (data) {
   $('.sign-in-nav').hide();
   $('.sign-out-nav').show();
   $('.sign-up-nav').hide();
-  surveyTemplateShow();
   hideModal();
+  uiSign.refreshDash();
 };
 
 let outSuccess = function () {
