@@ -83,14 +83,17 @@ let showResult = function() {
       e.preventDefault();
       var surveyId = $(this).attr('data-results-id');
       api.getOneSurvey(surveyId, function (survey) {
-        let resultTemplate = require('../handlebars/survey-results.handlebars');
         $('.dashboard-page').empty();
-        console.log(survey);
+        let resultTemplate = require('../handlebars/survey-results.handlebars');
         $('.create-survey-page').html(resultTemplate({survey}));
+          api.allSurveyResponses(surveyId, function (answer) {
+            console.log(answer);
+            let resAwnTemplate = require('../handlebars/response-answer.handlebars');
+            $('.create-survey-page').html(resAwnTemplate({answer}));
+        });
     });
   });
 };
-
 
 $('.dashboard-tab').on('click', refreshDash);
 

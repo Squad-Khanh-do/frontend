@@ -91,6 +91,18 @@ let postResponse = function (id, formLocation, onSuccess, onFailure) {
   .fail(onFailure);
 };
 
+let allSurveyResponses = function (id, onSuccess, onFailure) {
+  $.ajax({
+  url: myApp.baseUrl + '/surveys/' + id + '/surveyResponses',
+  method: 'GET',
+  headers: {
+    Authorization: 'Token token='+ myApp.user.token,
+  },
+  dataType: 'json'
+  })
+  .done(onSuccess)
+  .fail(onFailure);
+};
 
 module.exports = {
   postResponse,
@@ -99,4 +111,5 @@ module.exports = {
   retrieveSurveys,
   updateSurvey,
   deleteSurvey,
+  allSurveyResponses,
 };
