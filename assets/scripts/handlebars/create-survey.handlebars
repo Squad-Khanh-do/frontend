@@ -36,16 +36,82 @@
     </label>
   </div>
 
- <!-- <div class="form-row">
+  <div class="form-row">
     <label>
       <span>Survey Type</span>
       <select name="survey[type]">
-        <option>Multiple Choice</option>
-        <option>Scale</option>
-        <option>Text</option>
+        <option id="multiple-choice">Multiple Choice</option>
+        <option id="scale">Scale</option>
+        <option id="text">Text</option>
       </select>
     </label>
-  </div>  -->
+  </div>
+
+  <div class="form-row">
+    <label>
+      <span>Choice one</span>
+      <textarea name="survey[questions][choice][questone]">
+        {{#survey.survey}}
+          {{#this.questions}}
+            {{this.text}}
+          {{/this.questions}}
+        {{/survey.survey}}
+      </textarea>
+    </label>
+  </div>
+
+  <div class="form-row">
+    <label>
+      <span>Choice two</span>
+      <textarea name="survey[questions][choice][questtwo]">
+        {{#survey.survey}}
+          {{#this.questions}}
+            {{this.text}}
+          {{/this.questions}}
+        {{/survey.survey}}
+      </textarea>
+    </label>
+  </div>
+
+  <div class="form-row">
+    <label>
+      <span>Choice three</span>
+      <textarea name="survey[questions][choice][questthree]">
+        {{#survey.survey}}
+          {{#this.questions}}
+            {{this.text}}
+          {{/this.questions}}
+        {{/survey.survey}}
+      </textarea>
+    </label>
+  </div>
+
+  <div class="form-row">
+    <label>
+      <span>Choice four</span>
+      <textarea name="survey[questions][choice][questfour]">
+        {{#survey.survey}}
+          {{#this.questions}}
+            {{this.text}}
+          {{/this.questions}}
+        {{/survey.survey}}
+      </textarea>
+    </label>
+  </div>
+
+  <div class="form-row">
+    <label>
+      <span>Choice five</span>
+      <textarea name="survey[questions][choice][questfive]">
+        {{#survey.survey}}
+          {{#this.questions}}
+            {{this.text}}
+          {{/this.questions}}
+        {{/survey.survey}}
+      </textarea>
+    </label>
+  </div>
+
 
 <p> There will be a text field for survey takers to fill in.</p>
 

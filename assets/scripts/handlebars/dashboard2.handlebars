@@ -1,0 +1,48 @@
+<h2 class="survey-title">Survey Dashboard</h2>
+
+<form class="dashboardtable">
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Survey</th>
+        <th>Question</th>
+        <th>Result</th> <!-- result buttons -->
+        <th>URL</th>
+        <th>CRUD IT</th>
+      </tr>
+    </thead>
+    <tbody id="result-list">
+      {{#survey.surveys}}
+      <tr data-results-id="{{this.id}}">
+        <td><a class="survey-link" data-results-id="{{this.id}}">{{this.title}}</a></td>
+        <td>
+          {{#this.questions}}
+            {{this.text}}
+          {{/this.questions}}
+        </td>
+        <td>
+          <span class="button-center">
+            <button class="btn btn-xs btn-info">
+              <span class="result" data-results-id="{{this.id}}"> Result</span>
+            </button>
+          </span>
+        </td>
+        <td>
+          <a href="http://squad-khanh-do.github.io/surveys/{{this.id}}" target="_blank">http://squad-khanh-do.github.io/surveys/{{this.id}}</a> <!-- http://take-a-vey.com/surveys/ -->
+        </td>
+        <td>
+          <span class="button-center">
+            <button class="btn btn-xs btn-info update-button" data-results-id="{{this.id}}">
+              <span> UPDATE</span>
+            </button>
+            <button class="btn btn-xs btn-warning delete-button" data-results-id="{{this.id}}">
+              <span> DELETE</span>
+            </button>
+          </span>
+        </td>
+      </tr>
+      {{/survey.surveys}}
+      </script>
+    </tbody>
+  </table>
+</form>
