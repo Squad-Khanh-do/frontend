@@ -88,12 +88,37 @@ let showResult = function() {
         $('.dashboard-page').empty();
         let resultTemplate = require('../handlebars/survey-results.handlebars');
         $('.create-survey-page').html(resultTemplate({survey}));
-        console.log(survey);
           api.allSurveyResponses(surveyId, function (answer) {
             $('.dashboard-page').empty();
-            let responseTemplate = require('../handlebars/response-answer.handlebars');
-            $('.result-survey-page').html(responseTemplate({answer}));
-        });
+            var arr = answer.surveyResponses;
+              var obj = [];
+              for (var i = 0; i < arr.length; i++) {
+                var result = 0;
+                for(var k= 0; k<arr.length; k++){
+                  if (arr[i].response === arr[k].response){
+                    result +=1;
+                  }
+                }
+              obj.push(' ' + arr[i].response +' : ' + result);
+              }
+              var uniqueNames = [];
+              $.each(obj, function(i, el){
+                if($.inArray(el, uniqueNames) === -1) {
+                  uniqueNames.push(el);
+                }
+              $('.result-survey-page').empty();
+                for (let i = 0; i < uniqueNames.length; i++){
+                  $('.result-survey-page').append(uniqueNames[i] + '<br>');
+                }
+
+
+
+            });
+
+              console.log(uniqueNames);
+            // let responseTemplate = require('../handlebars/response-answer.handlebars');
+            // $('.result-survey-page').html(responseTemplate({answer}));
+        });  //need to add on failure
     });
   });
 };
