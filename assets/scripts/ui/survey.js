@@ -57,7 +57,7 @@ let uiDeleteSurvey = function() {
   $('.delete-button').on('click', function(e) {
     e.preventDefault();
     $('.deleteModal').modal('show');
-    var surveyId = $(this).attr('data-results-id');
+    let surveyId = $(this).attr('data-results-id');
     $('.delete-survey-button').on('click', function(e){
       e.preventDefault();
       api.deleteSurvey(surveyId, function(){
@@ -71,7 +71,7 @@ let uiDeleteSurvey = function() {
 let uiUpdateSurvey = function() {
   $('.update-button').on('click', function(e) {
     e.preventDefault();
-    var surveyId = $(this).attr('data-results-id');
+    let surveyId = $(this).attr('data-results-id');
     api.getOneSurvey(surveyId, function (survey) {
       let createSurveyTemplate = require('../handlebars/create-survey.handlebars');
       $('.dashboard-page').empty();
@@ -88,7 +88,7 @@ let uiUpdateSurvey = function() {
 let uiResponseSurvey = function() {
   $('.survey-link').on('click', function(e) {
     e.preventDefault();
-    var surveyId = $(this).attr('data-results-id');
+    let surveyId = $(this).attr('data-results-id');
     api.getOneSurvey(surveyId, function (survey) {
       let responseTemplate = require('../handlebars/response.handlebars');
       $('.dashboard-page').empty();
@@ -101,10 +101,37 @@ let uiResponseSurvey = function() {
   });
 };
 
+let resultArray = function(arr, item){
+  let obj = [];
+  for (let i = 0; i < arr.length; i++) {
+    let result = 0;
+    for(let k= 0; k<arr.length; k++){
+      if (arr[i][item] === arr[k][item]){
+        result +=1;
+      }
+    }
+    obj.push(' ' + arr[i][item] +' : ' + result);
+  }
+  return obj;
+};
+
+let displayUniqueValues = function(arr, item){
+  let uniqueNames = [];
+  $.each(resultArray(arr,  item), function(i, el){
+    if($.inArray(el, uniqueNames) === -1) {
+      uniqueNames.push(el);
+    }
+    $('.result-survey-page').empty();
+    for (let i = 0; i < uniqueNames.length; i++){
+      $('.result-survey-page').append(uniqueNames[i] + '<br>');
+    }
+  });
+};
+
 let showResult = function() {
   $('.result').on('click', function(e) {
       e.preventDefault();
-      var surveyId = $(this).attr('data-results-id');
+      let surveyId = $(this).attr('data-results-id');
       api.getOneSurvey(surveyId, function (survey) {
         $('.dashboard-page').empty();
         let resultTemplate = require('../handlebars/survey-results.handlebars');
@@ -112,34 +139,8 @@ let showResult = function() {
           api.allSurveyResponses(surveyId, function (answer) {
             $(".result-title").show();
             $('.dashboard-page').empty();
-            var arr = answer.surveyResponses;
-              var obj = [];
-              for (var i = 0; i < arr.length; i++) {
-                var result = 0;
-                for(var k= 0; k<arr.length; k++){
-                  if (arr[i].response === arr[k].response){
-                    result +=1;
-                  }
-                }
-              obj.push(' ' + arr[i].response +' : ' + result);
-              }
-              var uniqueNames = [];
-              $.each(obj, function(i, el){
-                if($.inArray(el, uniqueNames) === -1) {
-                  uniqueNames.push(el);
-                }
-              $('.result-survey-page').empty();
-                for (let i = 0; i < uniqueNames.length; i++){
-                  $('.result-survey-page').append(uniqueNames[i] + '<br>');
-                }
+            displayUniqueValues(answer.surveyResponses, "response");
 
-
-
-            });
-
-              console.log(uniqueNames);
-            // let responseTemplate = require('../handlebars/response-answer.handlebars');
-            // $('.result-survey-page').html(responseTemplate({answer}));
         });  //need to add on failure
     });
   });
