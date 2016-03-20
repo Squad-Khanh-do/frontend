@@ -19,7 +19,7 @@ let renderDash = function (survey) {
 let refreshDash = function () {
   $('.create-survey-page').empty();
   $('.result-survey-page').empty();
-  api.retrieveSurveys(renderDash, log);
+  api.retrieveSurveys(renderDash, log);ß
 };
 
 let displaySurveyType = function(type, showItem, hideItem, optional){
@@ -45,9 +45,9 @@ $('.survey-tab').on('click', function () {
   displaySurveyType('#multiple-choice', '.options', '.fill-in');
   displaySurveyType('#text', '.fill-in', '.options', '.mc-answer');
   $('.create-survey-submit').on('click', function(){
-    console.log("submit works");
     api.createSurvey('#createSurvey', function () {
       $('.create-survey-page').empty();
+      $('.result-title').hide();
       api.retrieveSurveys(renderDash, log);
     }, log);
   });
@@ -85,6 +85,16 @@ let uiUpdateSurvey = function() {
   });
 };
 
+let displayResponseChoice = function(mcAnswer, options, text){
+  if($(mcAnswer).val() === ''){
+    $(options).hide();
+  }
+  else{
+    $(text).hide();
+  }
+};
+
+
 let uiResponseSurvey = function() {
   $('.survey-link').on('click', function(e) {
     e.preventDefault();
@@ -93,7 +103,7 @@ let uiResponseSurvey = function() {
       let responseTemplate = require('../handlebars/response.handlebars');
       $('.dashboard-page').empty();
       $('.create-survey-page').html(responseTemplate({survey}));
-
+      displayResponseChoice('.mc-ans', '.options-answer', '.answer-text');
       $('.response-submit').on('click', function(){
         api.postResponse(surveyId, '#responseSurvey', refreshDash, refreshDash); // HACK: unknown success or failure order
       });
@@ -140,8 +150,7 @@ let showResult = function() {
             $(".result-title").show();
             $('.dashboard-page').empty();
             displayUniqueValues(answer.surveyResponses, "response");
-
-        });  //need to add on failure
+        },log);
     });
   });
 };
