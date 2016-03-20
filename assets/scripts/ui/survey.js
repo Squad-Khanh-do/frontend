@@ -13,6 +13,7 @@ let renderDash = function (survey) {
     uiUpdateSurvey();
     uiResponseSurvey();
     showResult();
+    $('.result-title').hide();
 };
 
 let refreshDash = function () {
@@ -21,11 +22,28 @@ let refreshDash = function () {
   api.retrieveSurveys(renderDash, log);
 };
 
+let displaySurveyType = function(type, showItem, hideItem, optional){
+  $(type).on('click', function(){
+    $(showItem).show();
+    $(hideItem).hide();
+    $(optional).val('');
+  });
+};
+
+let createSurveyDisplay = function(){
+  $('.dashboard-page').empty();
+  $('.result-survey-page').empty();
+  $('.options').hide();
+  $('.fill-in').hide();
+  $('.result-title').hide();
+};
+
 $('.survey-tab').on('click', function () {
   let createTemplate = require('../handlebars/create-survey.handlebars');
   $('.create-survey-page').html(createTemplate());
-  $('.dashboard-page').empty();
-  $('.result-survey-page').empty();
+  createSurveyDisplay();
+  displaySurveyType('#multiple-choice', '.options', '.fill-in');
+  displaySurveyType('#text', '.fill-in', '.options', '.mc-answer');
   $('.create-survey-submit').on('click', function(){
     console.log("submit works");
     api.createSurvey('#createSurvey', function () {
@@ -58,6 +76,8 @@ let uiUpdateSurvey = function() {
       let createSurveyTemplate = require('../handlebars/create-survey.handlebars');
       $('.dashboard-page').empty();
       $('.create-survey-page').html(createSurveyTemplate({survey}));
+      displaySurveyType('#multiple-choice', '.options', '.fill-in');
+      displaySurveyType('#text', '.fill-in', '.options', '.mc-answer');
       $('.create-survey-submit').on('click', function(){
         api.updateSurvey(surveyId, '#createSurvey', log, refreshDash); // HACK: ummm idk why refreshDash needs to be in failure
       });
@@ -73,6 +93,7 @@ let uiResponseSurvey = function() {
       let responseTemplate = require('../handlebars/response.handlebars');
       $('.dashboard-page').empty();
       $('.create-survey-page').html(responseTemplate({survey}));
+
       $('.response-submit').on('click', function(){
         api.postResponse(surveyId, '#responseSurvey', refreshDash, refreshDash); // HACK: unknown success or failure order
       });
@@ -89,6 +110,7 @@ let showResult = function() {
         let resultTemplate = require('../handlebars/survey-results.handlebars');
         $('.create-survey-page').html(resultTemplate({survey}));
           api.allSurveyResponses(surveyId, function (answer) {
+            $(".result-title").show();
             $('.dashboard-page').empty();
             var arr = answer.surveyResponses;
               var obj = [];

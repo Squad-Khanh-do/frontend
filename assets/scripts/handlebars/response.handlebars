@@ -30,47 +30,49 @@
     </label>
   </div>
 
-  <div class="form-row">
+  <div class="form-row answer-text">
   <label>
     <span>Answer Text </span>
     <textarea name="surveyResponse[response]"></textarea>
   </label>
 </div>
 
+<div class = "options-answer">
   {{#this.questions}}
     {{#this.choice}}
-    <div class="radio">
+    <div class="radio mc-ans">
       <label><input type="radio" name="surveyResponse[response]" value={{this.questone}}>
       {{this.questone}}
       </name></label>
 
     </div>
-      <div class="radio">
+      <div class="radio mc-ans">
         <label><input type="radio" name="surveyResponse[response]" value={{this.questtwo}}>
         {{this.questtwo}}
         </name></label>
       </div>
 
-      <div class="radio">
+      <div class="radio mc-ans">
         <label><input type="radio" name="surveyResponse[response]" value={{this.questthree}}>
         {{this.questthree}}
         </name></label>
       </div>
 
-      <div class="radio">
+      <div class="radio mc-ans">
         <label><input type="radio" name="surveyResponse[response]" value={{this.questfour}}>
           {{this.questfour}}
         </name></label>
       </div>
 
-      <div class="radio">
+      <div class="radio mc-ans">
         <label><input type="radio" name="surveyResponse[response]" value={{this.questfive}}>
           {{this.questfive}}
         </name></label>
       </div>
-  
+
     {{/this.choice}}
   {{/this.questions}}
+</div>
 
   <div class="form-row">
     <button type="submit" class="btn btn-info response-submit">Take It A'vey!</button>
