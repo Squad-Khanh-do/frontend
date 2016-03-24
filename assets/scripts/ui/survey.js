@@ -19,7 +19,7 @@ let renderDash = function (survey) {
 let refreshDash = function () {
   $('.create-survey-page').empty();
   $('.result-survey-page').empty();
-  api.retrieveSurveys(renderDash, log);ß
+  api.retrieveSurveys(renderDash, log);
 };
 
 let displaySurveyType = function(type, showItem, hideItem, optional){
@@ -85,6 +85,7 @@ let uiUpdateSurvey = function() {
   });
 };
 
+//toggle between mutiple choice or text field
 let displayResponseChoice = function(mcAnswer, options, text){
   if($(mcAnswer).val() === ''){
     $(options).hide();
@@ -111,7 +112,8 @@ let uiResponseSurvey = function() {
   });
 };
 
-let resultArray = function(arr, item){
+//counts the number of the same answer
+let countResult = function(arr, item){
   let obj = [];
   for (let i = 0; i < arr.length; i++) {
     let result = 0;
@@ -125,9 +127,10 @@ let resultArray = function(arr, item){
   return obj;
 };
 
+// removes the duplicate values and display only the answer once in the result page
 let displayUniqueValues = function(arr, item){
   let uniqueNames = [];
-  $.each(resultArray(arr,  item), function(i, el){
+  $.each(countResult(arr,  item), function(i, el){
     if($.inArray(el, uniqueNames) === -1) {
       uniqueNames.push(el);
     }
