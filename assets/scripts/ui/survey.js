@@ -115,15 +115,18 @@ let uiResponseSurvey = function() {
 //counts the number of the same answer
 let countResult = function(arr, item){
   let obj = [];
+  let noCommaString;
   for (let i = 0; i < arr.length; i++) {
     let result = 0;
     for(let k= 0; k<arr.length; k++){
       if (arr[i][item] === arr[k][item]){
+        noCommaString=arr[i][item].replace(/^,+/,"");
         result +=1;
       }
     }
-    obj.push(' ' + arr[i][item] +' : ' + result);
+    obj.push(noCommaString +' : ' + result);
   }
+
   return obj;
 };
 
@@ -133,6 +136,7 @@ let displayUniqueValues = function(arr, item){
   $.each(countResult(arr,  item), function(i, el){
     if($.inArray(el, uniqueNames) === -1) {
       uniqueNames.push(el);
+      console.log(uniqueNames);
     }
     $('.result-survey-page').empty();
     for (let i = 0; i < uniqueNames.length; i++){
