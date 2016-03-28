@@ -1,78 +1,84 @@
-<h2 class="survey-title">Answer It A'vey</h2>
+<h2 class="survey-title">Answer A'vey</h2>
 <form class="form-basic" id='responseSurvey'>
   {{#survey.survey}}
-  <div class="form-row">
-    <label>
-      <span>Survey Title</span>
-      <p class="right-side" name="survey[title]">
+
+  <div class="survey-response-adjust">
+    <div class="form-row">
+      <label>
+        <span>Survey Title</span>
+        <p class="right-side" name="survey[title]">
           {{this.title}}
-      </p>
-    </label>
-  </div>
+        </p>
+      </label>
+    </div>
 
-  <div class="form-row">
-    <label>
-      <span>Description Text </span>
-      <p class="right-side" name="survey[description]">
+    <div class="form-row">
+      <label>
+        <span>Description Text </span>
+        <p class="right-side" name="survey[description]">
           {{this.description}}
-      </p>
-    </label>
-  </div>
+        </p>
+      </label>
+    </div>
 
-  <div class="form-row">
-    <label>
-      <span>Survey Question</span>
-      <p class="right-side" name="survey[questions][text]">
+    <div class="form-row">
+      <label>
+        <span>Survey Question</span>
+        <p class="right-side" name="survey[questions][text]">
           {{#this.questions}}
-            {{this.text}}
+          {{this.text}}
           {{/this.questions}}
-      </p>
-    </label>
+        </p>
+      </label>
+    </div>
+
+    <div class="form-row answer-text">
+      <label>
+        <span>Answer Text </span>
+        <textarea name="surveyResponse[response]"></textarea>
+      </label>
+    </div>
+
   </div>
 
-  <div class="form-row answer-text">
-  <label>
-    <span>Answer Text </span>
-    <textarea name="surveyResponse[response]"></textarea>
-  </label>
-</div>
 
-<div class = "options-answer">
-  {{#this.questions}}
+  <div class = "options-answer">
+    {{#this.questions}}
     {{#this.choice}}
     <div class="radio">
       <label><input type="radio" class="mc-ans" name="surveyResponse[response]" value="{{this.questone}}">
-      {{this.questone}}
+        &ensp;{{this.questone}}
       </label>
 
     </div>
-      <div class="radio">
-        <label><input type="radio" class="mc-ans" name="surveyResponse[response]" value="{{this.questtwo}}">
-        {{this.questtwo}}
-        </label>
-      </div>
 
-      <div class="radio">
-        <label><input type="radio" class="mc-ans" name="surveyResponse[response]" value="{{this.questthree}}" >
-        {{this.questthree}}
-        </label>
-      </div>
+    <div class="radio">
+      <label><input type="radio" class="mc-ans" name="surveyResponse[response]" value="{{this.questtwo}}">
+        &ensp;{{this.questtwo}}
+      </label>
+    </div>
 
-      <div class="radio">
-        <label><input type="radio" class="mc-ans" name="surveyResponse[response]" value="{{this.questfour}}" >
-          {{this.questfour}}
-        </label>
-      </div>
+    <div class="radio">
+      <label><input type="radio" class="mc-ans" name="surveyResponse[response]" value="{{this.questthree}}" >
+        &ensp;{{this.questthree}}
+      </label>
+    </div>
 
-      <div class="radio">
-        <label><input type="radio" class="mc-ans" name="surveyResponse[response]" value="{{this.questfive}}">
-          {{this.questfive}}
-        </label>
-      </div>
+    <div class="radio">
+      <label><input type="radio" class="mc-ans" name="surveyResponse[response]" value="{{this.questfour}}" >
+        &ensp;{{this.questfour}}
+      </label>
+    </div>
+
+    <div class="radio">
+      <label><input type="radio" class="mc-ans" name="surveyResponse[response]" value="{{this.questfive}}">
+        &ensp;{{this.questfive}}
+      </label>
+    </div>
 
     {{/this.choice}}
-  {{/this.questions}}
-</div>
+    {{/this.questions}}
+  </div>
 
   <div class="form-row">
     <button type="submit" class="btn btn-info response-submit">Take It A'vey!</button>
