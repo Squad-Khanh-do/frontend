@@ -36,18 +36,100 @@
     </label>
   </div>
 
- <!-- <div class="form-row">
-    <label>
-      <span>Survey Type</span>
-      <select name="survey[type]">
-        <option>Multiple Choice</option>
-        <option>Scale</option>
-        <option>Text</option>
-      </select>
-    </label>
-  </div>  -->
+<h5>Please choose which survey type you want<h5>
 
-<p> There will be a text field for survey takers to fill in.</p>
+  <div class="btn-group survey-type">
+    <button type="button" class="btn btn-info dropdown-toggle"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      Survey Type <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu" >
+      <li><a id="multiple-choice">Multiple Choice</a></li>
+        <li role="separator" class="divider"></li>
+      <li><a id="text">Text</a></li>
+    </ul>
+  </div>
+
+  <br>
+  <br>
+
+<div class = "options">
+  <div class="form-row">
+    <label>
+      <span>Choice one</span>
+      <textarea class="mc-answer" name="survey[questions][choice][questone]">
+        {{#survey.survey}}
+          {{#this.questions}}
+          {{#this.choice}}
+          {{this.questone}}
+          {{/this.choice}}
+          {{/this.questions}}
+        {{/survey.survey}}
+      </textarea>
+    </label>
+  </div>
+
+  <div class="form-row">
+    <label>
+      <span>Choice two</span>
+      <textarea class="mc-answer" name="survey[questions][choice][questtwo]">
+        {{#survey.survey}}
+          {{#this.questions}}
+          {{#this.choice}}
+          {{this.questtwo}}
+          {{/this.choice}}
+          {{/this.questions}}
+        {{/survey.survey}}
+      </textarea>
+    </label>
+  </div>
+
+  <div class="form-row">
+    <label>
+      <span>Choice three</span>
+      <textarea class="mc-answer" name="survey[questions][choice][questthree]">
+        {{#survey.survey}}
+          {{#this.questions}}
+            {{#this.choice}}
+            {{this.questthree}}
+            {{/this.choice}}
+          {{/this.questions}}
+        {{/survey.survey}}
+      </textarea>
+    </label>
+  </div>
+
+  <div class="form-row">
+    <label>
+      <span>Choice four</span>
+      <textarea class="mc-answer" name="survey[questions][choice][questfour]">
+        {{#survey.survey}}
+          {{#this.questions}}
+          {{#this.choice}}
+          {{this.questfour}}
+          {{/this.choice}}
+          {{/this.questions}}
+        {{/survey.survey}}
+      </textarea>
+    </label>
+  </div>
+
+  <div class="form-row">
+    <label>
+      <span>Choice five</span>
+      <textarea class="mc-answer" name="survey[questions][choice][questfive]">
+        {{#survey.survey}}
+          {{#this.questions}}
+          {{#this.choice}}
+          {{this.questfive}}
+          {{/this.choice}}
+          {{/this.questions}}
+        {{/survey.survey}}
+      </textarea>
+    </label>
+  </div>
+</div>
+
+<p class = "fill-in"> There will be a text field for survey takers to fill in.</p>
 
   <div class="form-row">
     <button type="submit" class="btn btn-info create-survey-submit">Take It A'vey!</button>

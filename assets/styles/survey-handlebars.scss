@@ -8,20 +8,41 @@
   text-align: center;
 }
 
-.right-side{
+.right-side {
   float: right;
   font-weight: normal;
   margin-top: 12px;
+}
+.response-results {
+  margin-left: 20em;
+}
+
+.survey-type {
+  margin-left: 6em;
+}
+
+
+.survey-response-adjust {
+  margin-left: 6em;
+
+}
+
+.options-answer {
+  margin-left: 15em;
+  text-align: left;
 }
 
 th {
   font-size: 15px;
 }
 
-th, td, tr, .button-center {
+th,
+td,
+tr,
+.button-center {
   margin: auto;
-  text-align: center;
   position: inherit;
+  text-align: center;
 }
 
 .form-basic{

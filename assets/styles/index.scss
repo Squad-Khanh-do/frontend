@@ -4,8 +4,7 @@ $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
 @import 'colors';
 @import 'survey-handlebars';
 @import 'typography';
-
-
+@import 'dashboard';
 
 
 .homepage-content {
@@ -18,4 +17,12 @@ footer {
 
 .footer-text {
   text-align: center;
+}
+
+
+.result-title {
+  margin-left: 10em;
+}
+.result-survey-page {
+  margin-left: 17em;
 }
