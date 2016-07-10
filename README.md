@@ -1,5 +1,5 @@
 # Take A'Vey
-WDI Project 3: A single page survey builder app by [Ethan](https://github.com/edesilets) ,[Khanhnhat](https://github.com/Knguyen21) and [Yao](https://github.com/msyao).
+WDI Project 3: A single page survey builder app by [Ethan](https://github.com/edesilets), [Khanhnhat](https://github.com/Knguyen21) and [Yao](https://github.com/msyao).
 
 ##User Story & Wireframes
 Both of these are available at our group [Trello Board](https://trello.com/b/Q1Rcw2Lr/take-a-vey).
