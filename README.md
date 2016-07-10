@@ -34,8 +34,8 @@ Text - a user creates a question title, description, and the survey taker is the
 ##Deployed front end link
 Please [take it a'vey](http://squad-khanh-do.github.io/frontend/).
 
-##Project 3 front end repo
-[Take A'Vey Frontend](https://github.com/Squad-Khanh-do/frontend).
+##Project 3 back end repo
+[Take A'Vey Frontend](https://github.com/Squad-Khanh-do/backend).
 
 ##Future Features
 1. Add a question to an existing survey
