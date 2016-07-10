@@ -1,33 +1,41 @@
 # Take A'Vey
-WDI Project 3: A single page survey builder app by Ethan, Khanhnhat and Yao.
+WDI Project 3: A single page survey builder app by [Ethan](https://github.com/edesilets) ,[Khanhnhat](https://github.com/Knguyen21) and [Yao](https://github.com/msyao).
 
 ##User Story & Wireframes
 Both of these are available at our group [Trello Board](https://trello.com/b/Q1Rcw2Lr/take-a-vey).
 
+![Trello](https://media.giphy.com/media/YmgU9VVxvIMxi/giphy.gif)
+
 ##Explanation of App
-This web app allows logged-in users to create custom surveys. Once survey is created and completed, results of the survey will be collected and rendered on a dashboard. From the Dashboard view, users have the options to **CRUD**: create new surveys, edit questions within an existing survey, and delete a survey.
+Take A'Vey is a single-page app that allows registered users to create custom surveys. Once a survey is created and completed, results of the survey will be collected and rendered on a dashboard. From the Dashboard view, users have the options to _**CRUD**_: create new surveys, edit fields of an existing survey, and delete a survey.
 
 There are only one type of survey:
 Text - a user creates a question title, description, and the survey taker is then given a text field to write an answer.
 
+###Action Shots:
+| **Register An Account**                                                                                                                                                       | **Create Surveys**                                                                                                                                                         |
+|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| ![Create Account](https://media.giphy.com/media/3BsKCTWUA14A0/giphy.gif) | ![Create Survey](https://media.giphy.com/media/65eQYZzFHi1Ms/giphy.gif) |                                                                                                                                                                 |
+| **Update Survey**                                                                                                                                                         | **Survey Results**                                                                                                                                                            |
+| ![Update Survey](https://media.giphy.com/media/DhKSlpOdzCwBG/giphy.gif) | ![Survey Results](https://media.giphy.com/media/VBYiroZoEM4Mg/giphy.gif) |
+|
+
 ###Technologies Used
 
-- Node.js
-- Express
-- Mongoose
-- MongoDB
-- jQuery
-- Javacript
-- HTML5
-- Bootstrap
-- SCSS
-- Git
+**Languages**:                HTML5, CSS3, JavaScript
+
+**Frameworks & Libraries**:   Bootstrap, JQuery, AJAX, Node.js, Express
+
+**Tools**:                    Git, GitHub, Heroku, Trello, Bash
+
+**Methodologies**:            Pair programming, Agile, ERD, UX Design
+
 
 ##Deployed front end link
 Please [take it a'vey](http://squad-khanh-do.github.io/frontend/).
 
-##Project 3 back end repo
-[Take A'Vey Backend](https://github.com/Squad-Khanh-do/backend).
+##Project 3 front end repo
+[Take A'Vey Frontend](https://github.com/Squad-Khanh-do/frontend).
 
 ##Future Features
 1. Add a question to an existing survey
